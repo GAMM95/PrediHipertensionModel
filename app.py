@@ -4,25 +4,22 @@ import pickle
 import numpy as np
 import os
 
-model = pickle.load(open("./Model/hypertension_model.pkl","rb"))
-
-
 # Cargar el modelo desde el archivo
-with open(model, 'rb') as file:
-    model = pickle.load(file)
+model_path = "./Model/hypertension_model.pkl"
+model = pickle.load(open(model_path, "rb"))
 
 # Inicializar la aplicación Flask
 app = Flask(__name__)
 
 # Ruta para servir el icono favicon.ico desde el directorio assets
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'assets'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+# @app.route('/favicon.ico')
+# def favicon():
+#     return send_from_directory(os.path.join(app.root_path, 'assets'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 # Ruta de inicio
 @app.route('/')
 def home():
-    return "Hola GAMM. Estas haciendo prueba de la API"
+    return "Hola GAMM"
 
 # Ruta para realizar la predicción
 @app.route('/predict', methods=['GET', 'POST'])
@@ -86,6 +83,4 @@ def predict():
 
 if __name__ == '__main__':
     # Ejecutar la aplicación Flask
-    app.run(host="0.0.0.0",port=5000, debug=True)
-    ## app.run(debug=True)
-    ## app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(host="0.0.0.0", port=5000, debug=True)
