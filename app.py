@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 # Cargar el modelo desde el archivo
-model_path = "./Model/hypertension_model.pkl"
+model_path = "./Model/hipertension_model.pkl"
 model = pickle.load(open(model_path, "rb"))
 
 # Inicializar la aplicación Flask
